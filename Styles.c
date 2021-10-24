@@ -7,6 +7,7 @@ void main()
   initgraph(&gd,&gmode,"C:\\TURBOC3\\BGI");
   outtext("Dimensions of display : ");
   gotoxy(25,1);
+  printf("%d x %d",getmaxx(),getmaxy());
   outtextxy(1,35,"Designs made by setfillstyle(), setcolor(), floodfill() and ...");
   outtextxy(1,70,"i) circle() :-");
   for(i=0;i<13;i++)
@@ -15,6 +16,14 @@ void main()
     circle(i*50,120,30);
     floodfill(i*50,120,i);
     delay(250);
+  }
+  setcolor(15);
+  outtextxy(1,180,"ii) fillellipse() :-");
+  for(i=0;i<13;i++)
+  { setfillstyle(i,15-i);
+    setcolor(i);
+    fillellipse(i*50,230,35,25+i*2);
+    delay(200);
   }
   setcolor(15);
   outtextxy(1,280,"iii) fillpoly :-");
@@ -32,6 +41,11 @@ void main()
   getch();
   cleardevice();
   settextstyle(1,0,1);
+  for(i=0;i<10;i++)
+  { setbkcolor(i);
+    outtextxy(100,175,"Changing backgroud color using setbkcolor()");
+    delay(700);
+  }
   setbkcolor(4);
   gotoxy(48,15);
   outtextxy(190,217,"Color code of text : ");
@@ -44,6 +58,12 @@ void main()
   setlinestyle(0,0,3);
   line(1,10,getmaxx(),10);
   settextstyle(0,0,2);
+  outtextxy(20,20,"Font Styles :-");
+  settextstyle(0,0,2);
+  outtextxy(360,20,"Line Styles :-");
+  settextstyle(0,1,2);
+  outtextxy(370,58,"5 Line Styles");
+  setlinestyle(0,0,3);
   line(1,45,getmaxx(),45);
   setlinestyle(0,0,1);
   line(340,10,340,275);
@@ -71,6 +91,8 @@ void main()
   }
   settextstyle(0,0,1);
   outtextxy(520,310,"Press any");
+  outtextxy(520,340,"key to");
+  outtextxy(520,370,"Exit...");
   getch();
   closegraph();
 }
